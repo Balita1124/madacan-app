@@ -1,0 +1,26 @@
+<h2>Applicants</h2>
+
+<form onsubmit="javascript:void(0)" style="max-width: 20em; margin-top: 2em;">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search Filter" ng-model="$ctrl.query" />
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Firstname</th>
+        <th class="hidden-sm hidden-xs">Lastname</th>
+        <th>Birth date</th>
+    </tr>
+    </thead>
+
+    <tr ng-repeat="applicant in $ctrl.applicants | filter:$ctrl.query track by applicant.id">
+        <td>
+            <a ui-sref="applicantDetails({ applicantId: applicant.id })">
+                {{applicant.firstname}} {{applicant.lastname}}
+            </a>
+        </td>
+        <td>{{applicant.birthdate}}</td>
+    </tr>
+</table>
